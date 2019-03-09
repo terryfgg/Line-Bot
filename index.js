@@ -78,7 +78,7 @@ bot.on('message', function(event) {
                 {
                   "type": "uri",
                   "label": "詳細資料",
-                  "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
+                  "uri": "https://www.youtube.com/?gl=TW"
                 }
             ]
         }
