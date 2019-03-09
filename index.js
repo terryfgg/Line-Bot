@@ -15,18 +15,77 @@ var bot = linebot({
 });
 
 
-//----------------------------------------
-// 機器人接受訊息的處理
-//----------------------------------------
-bot.on('message', function(event) {
-    event.reply({
-        "type": "video",
-        "originalContentUrl": "https://terrylin-app.herokuapp.com/video/v01.mp4",
-        "previewImageUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg"
+//========================================
+// 機器人接受回覆的處理
+//========================================
+bot.on('postback', function(event) { 
+    var data = event.postback.data;
+    var userId = event.source.userId;
+
+    event.source.profile().then(function (profile) {
+        userName = profile.displayName;
+		
+        return event.reply([
+            {
+                "type": "text",
+                "text": data
+            },
+            {
+                "type": "text",
+                "text": userId
+            },
+            {
+                "type": "text",
+                "text": userName
+            }
+        ]);		
     });
 });
+//========================================
 
-//----------------------------------------
+
+//========================================
+// 機器人接受訊息的處理
+//========================================
+bot.on('message', function(event) {
+	event.reply({
+        "type": "template",
+        "altText": "這是按鈕樣板",
+        "template": {
+            "type": "buttons",
+            "thumbnailImageUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg",
+            "imageAspectRatio": "rectangle",
+            "imageSize": "cover",
+            "imageBackgroundColor": "#FFFFFF",
+            "title": "梵谷-星夜",
+            "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
+            "defaultAction": {
+                "type": "uri",
+                "label": "詳細資料",
+                "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
+            },
+            "actions": [
+                {
+                  "type": "postback",
+                  "label": "買了",
+                  "data": "action=buy&itemid=123"
+                },
+                {
+                  "type": "postback",
+                  "label": "加入購物車",
+                  "data": "action=add&itemid=123"
+                },
+                {
+                  "type": "uri",
+                  "label": "詳細資料",
+                  "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
+                }
+            ]
+        }
+      });
+});
+//========================================
+
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
 //----------------------------------------
