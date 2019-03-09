@@ -23,8 +23,8 @@ bot.on('message', function(event) {
         function (profile) {            
             return event.reply({
                 "type": "image",
-                "originalContentUrl": "https://terrylin-app.herokuapp.com/imgs/01.jpg",
-                "previewImageUrl": "https://terry-app.herokuapp.com/imgs/01.jpg"
+                "originalContentUrl": "https://terrylin-app.herokuapp.com/imgs/02.jpg",
+                "previewImageUrl": "https://terry-app.herokuapp.com/imgs/03.jpg"
             });	            
         }
     );
