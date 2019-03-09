@@ -19,15 +19,16 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //----------------------------------------
 bot.on('message', function(event) {
-    console.log(typeof(event.message.text));
-    if (event.message.text ==='1'){
-        event.reply('Hello');
-    }
-    else{
-        event.reply('你好');
-    }
+    event.source.profile().then(
+        function (profile) {            
+            return event.reply({
+                "type": "image",
+                "originalContentUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg",
+                "previewImageUrl": "https://terry-app.herokuapp.com/imgs/p01.jpg"
+            });	            
+        }
+    );
 });
-
 
 //----------------------------------------
 // 建立一個網站應用程式app
