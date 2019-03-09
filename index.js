@@ -19,15 +19,11 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //----------------------------------------
 bot.on('message', function(event) {
-    event.source.profile().then(
-        function (profile) {            
-            return event.reply({
-                "type": "image",
-                "originalContentUrl": "https://terrylin-app.herokuapp.com/imgs/01.jpg",
-                "previewImageUrl": "https://terrylin-app.herokuapp.com/imgs/02.jpg"
-            });	            
-        }
-    );
+    event.reply({
+        "type": "video",
+        "originalContentUrl": "https://terrylin-app.herokuapp.com/video/v01.mp4",
+        "previewImageUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg"
+    });
 });
 
 //----------------------------------------
