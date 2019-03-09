@@ -80,7 +80,7 @@ bot.on('message', function(event) {
                           "uri": "https://zh.wikipedia.org/wiki/向日葵_(梵高)"
                       }
                   ]
-                }
+                },
                 {
                     "thumbnailImageUrl": "https://terrylin-app.herokuapp.com/imgs/03.jpg",
                     "imageBackgroundColor": "#000000",
@@ -109,6 +109,7 @@ bot.on('message', function(event) {
                         }
                     ]
                   }
+
             ],
             "imageAspectRatio": "rectangle",
             "imageSize": "cover"
@@ -116,6 +117,7 @@ bot.on('message', function(event) {
     });
 });
 //========================================
+
 
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
