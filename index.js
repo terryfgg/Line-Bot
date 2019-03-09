@@ -18,39 +18,27 @@ var bot = linebot({
 //========================================
 // 機器人接受訊息的處理
 //========================================
-bot.on('message', function(event) {
-    event.reply({
-        "type": "template",
-        "altText": "this is a image carousel template",
-        "template": {
-            "type": "image_carousel",
-            "columns": [
-                {
-                    "imageUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg",
-                    "action": {
-                        "type": "postback",
-                        "label": "星夜",
-                        "data": "1"
-                    }
-                },
-                {
-                    "imageUrl": "https://terrylin-app.herokuapp.com/imgs/02.jpg",
-                    "action": {
-                        "type": "postback",
-                        "label": "向日葵",
-                        "data": "2"
-                    }
-                },
-                {
-                    "imageUrl": "https://terrylin-app.herokuapp.com/imgs/03.jpg",
-                    "action": {
-                        "type": "postback",
-                        "label": "夜晚的露天咖啡座",
-                        "data": "3"
-                    }
-                }
-            ]
-        }
+bot.on('postback', function(event) { 
+    var data = event.postback.data;
+    var userId = event.source.userId;
+
+    event.source.profile().then(function (profile) {
+        userName = profile.displayName;
+		
+        return event.reply([
+            {
+                "type": "text",
+                "text": data
+            },
+            {
+                "type": "text",
+                "text": userId
+            },
+            {
+                "type": "text",
+                "text": userName
+            }
+        ]);		
     });
 });
 //========================================
