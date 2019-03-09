@@ -19,8 +19,11 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //----------------------------------------
 bot.on('message', function(event) {
-    console.log('#######123')
-    event.reply('Hello, 你好,我是林泰宇');  
+    event.source.profile().then(
+        function (profile) {		
+            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+        }
+    );
 });
 
 
