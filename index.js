@@ -4,6 +4,9 @@
 var linebot = require('linebot');
 var express = require('express');
 
+//增加引用函式
+const student = require('./utility/student.js');
+
 
 //----------------------------------------
 // 填入自己在Line Developers的channel值
@@ -42,32 +45,30 @@ bot.on('postback', function(event) {
     });
 });
 //========================================
-//========================================
+//--------------------------------
 // 機器人接受訊息的處理
-//========================================
-bot.on('message', function(event) {
-	event.reply({
-        "type": "template",
-        "altText": "這是一個確認樣板",
-        "template": {
-            "type": "confirm",
-            "text": "是否確定購買?",
-            "actions": [
-                {
-                  "type": "postback",
-                  "label": "是, 要買",
-                  "data": "yes"
-                },
-                {
-                  "type": "postback",
-                  "label": "不, 不買了",
-                  "data": "no"
-                }
-            ]
+//--------------------------------
+bot.on('message', function(event) {    
+    event.source.profile().then(
+        function (profile) {	
+            //取得使用者資料
+            var userName = profile.displayName;
+            var userId = profile.userId;
+	    
+	    //使用者傳來的學號
+            var no = event.message.text;		
+		  
+            student.fetchOneStudent(no).then(d => {
+                if (d.data.length > 0){
+                    event.reply(d.data[0].stuname);  //回覆學生姓名
+                }else{
+                    event.reply('找不到資料');        //回覆找不到
+                }  
+            })  
         }
-    });
+    );
 });
-//========================================
+
 
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
