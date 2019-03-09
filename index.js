@@ -20,30 +20,14 @@ var bot = linebot({
 //----------------------------------------
 bot.on('message', function(event) {
     event.source.profile().then(
-        function (profile) {
-            var name = profile.displayName;
-            var userId = profile.userId;
-            var msg = event.message.text;
-            
-            return event.reply([
-                {
-                    "type": "text",
-                    "text": name
-                },
-                {
-                    "type": "text",
-                    "text": userId
-                },
-                {
-                    "type": "text",
-                    "text": msg
-                },
-                {
-                    "type": "sticker",
-                    "packageId": "4",   //packageId可輸入1~4
-                    "stickerId": "5"
-                }
-            ]);	            
+        function (profile) {            
+            return event.reply({
+                "type": "location",
+                "title": "國立臺北商業大學",
+                "address": "台北市濟南路1段321號",
+                "latitude": 25.042039,
+                "longitude": 121.525592
+            });	            
         }
     );
 });
