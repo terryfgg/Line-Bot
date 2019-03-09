@@ -19,7 +19,7 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //----------------------------------------
 bot.on('message', function(event) {
-    if (event.message.text==1){
+    if (event.message.text ===1){
         event.reply('Hello');
     }
     else{
