@@ -24,7 +24,7 @@ bot.on('message', function(event) {
             return event.reply({
                 "type": "image",
                 "originalContentUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg",
-                "previewImageUrl": "https://terry-app.herokuapp.com/imgs/p01.jpg"
+                "previewImageUrl": "https://terrylin-app.herokuapp.com/imgs/p01.jpg"
             });	            
         }
     );
