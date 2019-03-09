@@ -42,7 +42,7 @@ bot.on('message', function(event) {
                     }
                 },
                 {
-                    "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/03.jpg",
+                    "imageUrl": "https://terrylin-app.herokuapp.com/imgs/03.jpg",
                     "action": {
                         "type": "postback",
                         "label": "夜晚的露天咖啡座",
